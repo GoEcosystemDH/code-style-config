@@ -1,0 +1,15 @@
+{
+  "name": "@goecosystemdh/code-style-config",
+  "version": "1.0.0",
+  "description": "Shared code style configs for GoEcosystemDH",
+  "private": true,
+  "workspaces": [
+    "packages/eslint-config",
+    "packages/prettier-config"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoEcosystemDH/code-style-config.git"
+  },
+  "license": "UNLICENSED"
+}

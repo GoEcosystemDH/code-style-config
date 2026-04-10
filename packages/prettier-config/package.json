@@ -1,0 +1,23 @@
+{
+  "name": "@goecosystemdh/prettier-config",
+  "version": "1.0.0",
+  "description": "Shared Prettier config for GoEcosystemDH",
+  "main": "index.js",
+  "type": "module",
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoEcosystemDH/code-style-config.git",
+    "directory": "packages/prettier-config"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  },
+  "license": "UNLICENSED"
+}

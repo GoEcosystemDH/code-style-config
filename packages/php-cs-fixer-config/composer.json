@@ -1,0 +1,15 @@
+{
+  "name": "goecosystemdh/php-cs-fixer-config",
+  "description": "Shared PHP-CS-Fixer config for GoEcosystemDH - PSR-12 + curated Symfony rules",
+  "type": "library",
+  "license": "proprietary",
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "friendsofphp/php-cs-fixer": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "GoEcosystemDH\\CodeStyle\\": "src/"
+    }
+  }
+}

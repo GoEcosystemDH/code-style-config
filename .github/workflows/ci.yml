@@ -1,0 +1,49 @@
+name: CI - Validate configs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate-eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate ESLint flat config loads
+        run: |
+          cd packages/eslint-config
+          npm install --ignore-scripts
+          node -e "import('./index.js').then(m => console.log('ESLint flat config OK:', m.default.length, 'config objects'))"
+
+  validate-prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate Prettier config loads
+        run: |
+          cd packages/prettier-config
+          node -e "import('./index.js').then(m => console.log('Prettier config OK:', Object.keys(m.default).length, 'options'))"
+
+  validate-php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - name: Validate PHP-CS-Fixer config loads
+        run: |
+          cd packages/php-cs-fixer-config
+          composer install --no-interaction --prefer-dist
+          php -r "
+            require 'vendor/autoload.php';
+            \$config = new GoEcosystemDH\\CodeStyle\\Config();
+            echo 'PHP-CS-Fixer config OK: ' . count(\$config->getRules()) . ' rules' . PHP_EOL;
+          "
