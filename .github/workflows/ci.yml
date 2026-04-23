@@ -7,6 +7,7 @@ on:
 
 jobs:
   validate-eslint:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +21,7 @@ jobs:
           node -e "import('./index.js').then(m => console.log('ESLint flat config OK:', m.default.length, 'config objects'))"
 
   validate-prettier:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,6 +34,7 @@ jobs:
           node -e "import('./index.js').then(m => console.log('Prettier config OK:', Object.keys(m.default).length, 'options'))"
 
   validate-php-cs-fixer:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
